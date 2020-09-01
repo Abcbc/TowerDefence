@@ -1,11 +1,16 @@
 package mygame;
 
+import cams.StrategyCam;
 import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Box;
+import mygame.states.GameLoop;
+import mygame.states.MainMenu;
+import utils.Grid;
 
 /**
  * This is the Main Class of your Game. You should only do initialization here.
@@ -13,22 +18,27 @@ import com.jme3.scene.shape.Box;
  * @author normenhansen
  */
 public class Main extends SimpleApplication {
-
+    
+    private StrategyCam sCam;
+    
     public static void main(String[] args) {
         Main app = new Main();
         app.start();
+        
     }
 
     @Override
     public void simpleInitApp() {
-        Box b = new Box(1, 1, 1);
-        Geometry geom = new Geometry("Box", b);
-
-        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setColor("Color", ColorRGBA.Blue);
-        geom.setMaterial(mat);
-
-        rootNode.attachChild(geom);
+        this.flyCam.setEnabled(false);
+        this.cam.setLocation(new Vector3f(0f,8f,0f));
+        this.cam.lookAt(new Vector3f(0f,0f,4f), cam.getUp());
+        this.sCam = new StrategyCam(this.cam);
+        this.sCam.registerWithInput(inputManager);
+        
+        this.getStateManager().attach(new GameLoop());
+        this.getStateManager().attach(new MainMenu());
+       
+        
     }
 
     @Override
