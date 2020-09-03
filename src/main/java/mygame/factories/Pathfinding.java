@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mygame;
+package mygame.factories;
 
 import com.jme3.math.Vector3f;
 import utils.Grid;
+import utils.Pathfinder;
 
 /**
  *
@@ -18,10 +19,10 @@ public class Pathfinding {
     private final static int X = 250;
     private final static int Y = 250;
     private final static float DELTA = 0.5f;
-    private final static Grid GRID = Grid.create(CENTER, X, Y, DELTA);
+    private final static Pathfinder PATHFINDER = Pathfinder.create(CENTER, X, Y, DELTA);
     
-    public static Grid create(){
-       return GRID;
+    public static Pathfinder create(){
+       return PATHFINDER;
     }
     
     

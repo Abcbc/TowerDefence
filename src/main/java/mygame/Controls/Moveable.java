@@ -34,6 +34,7 @@ public class Moveable extends AbstractControl {
     protected void controlUpdate(float tpf) {
         Vector3f target = spatial.getUserData("target");
         Vector3f currentPos =  this.spatial.getLocalTranslation();
+
         spatial.lookAt(target, Vector3f.UNIT_Y);
         float distance = currentPos.distance(target);
         

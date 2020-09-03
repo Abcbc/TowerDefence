@@ -1,16 +1,11 @@
 package mygame;
 
-import cams.StrategyCam;
+import mygame.cams.StrategyCam;
 import com.jme3.app.SimpleApplication;
-import com.jme3.material.Material;
-import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
-import com.jme3.scene.Geometry;
-import com.jme3.scene.shape.Box;
 import mygame.states.GameLoop;
 import mygame.states.MainMenu;
-import utils.Grid;
 
 /**
  * This is the Main Class of your Game. You should only do initialization here.
@@ -24,7 +19,6 @@ public class Main extends SimpleApplication {
     public static void main(String[] args) {
         Main app = new Main();
         app.start();
-        
     }
 
     @Override
@@ -37,8 +31,6 @@ public class Main extends SimpleApplication {
         
         this.getStateManager().attach(new GameLoop());
         this.getStateManager().attach(new MainMenu());
-       
-        
     }
 
     @Override

@@ -25,7 +25,10 @@ import com.jme3.scene.Spatial;
 import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
 import java.io.IOException;
+
+import mygame.factories.Pathfinding;
 import utils.Grid;
+import utils.Pathfinder;
 
 /**
  *
@@ -35,18 +38,17 @@ public class BuildingPlacable extends AbstractControl implements ActionListener 
     private final SimpleApplication app;
     private final InputManager inputManager;
     private final Camera cam;
-    private final Grid grid;
+    private final Pathfinder pathfinder = Pathfinding.create();
     String clippingLayer;
     public final String LEFT_MOUSE_BUTTON = "LeftMouseButton";
     String[] mappings = {LEFT_MOUSE_BUTTON};
 
     
-    public BuildingPlacable(SimpleApplication app, String clippingLayer, Grid grid){
+    public BuildingPlacable(SimpleApplication app, String clippingLayer){
         this.app = app;
+        this.cam = this.app.getCamera();
         this.clippingLayer = clippingLayer;
-        this.grid = grid;
-        cam = this.app.getCamera();
-        inputManager = this.app.getInputManager();
+        this.inputManager = this.app.getInputManager();
         
         this.registerWithInput();
     }
@@ -111,7 +113,7 @@ public class BuildingPlacable extends AbstractControl implements ActionListener 
     public void onAction(String name, boolean isPressed, float tpf) {
        if(name.equals(LEFT_MOUSE_BUTTON) && !isPressed){
            try{
-                grid.setBlocker(this.spatial.getLocalTranslation(), Float.MAX_VALUE);
+                pathfinder.setBlocker(this.spatial.getLocalTranslation(), Float.MAX_VALUE);
                 System.out.print("Set");
                 this.spatial.removeControl(this);
            }

@@ -9,11 +9,8 @@ import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
 import de.lessvoid.nifty.Nifty;
-import de.lessvoid.nifty.screen.Screen;
-import de.lessvoid.nifty.screen.ScreenController;
 import com.jme3.niftygui.NiftyJmeDisplay;
-import controller.GameLoopScreen;
-import utils.Grid;
+import mygame.controller.GameLoopScreen;
 
 /**
  *  

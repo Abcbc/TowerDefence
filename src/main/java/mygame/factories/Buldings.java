@@ -1,4 +1,4 @@
-package factories;
+package mygame.factories;
 
 
 import com.jme3.app.SimpleApplication;
@@ -25,7 +25,6 @@ public class Buldings {
     public static Geometry create(String type, Vector3f position){
        
         switch(type){
-            
             case TEST_BUILDING: return createTestBuilding(app, position);
            
         }

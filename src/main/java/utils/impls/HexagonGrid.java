@@ -1,7 +1,9 @@
-package utils;
+package utils.impls;
 
 
 import com.jme3.math.Vector3f;
+import utils.Grid;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import java.util.List;
  *
  * @author admin
  */
-public abstract class HexagonGrid implements Grid{
+public abstract class HexagonGrid implements Grid {
 
     
     private static class Hexagon<T>{

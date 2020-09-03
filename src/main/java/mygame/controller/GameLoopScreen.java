@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
-import buildings.Building;
+package mygame.controller;
+import mygame.buildings.Building;
 import com.jme3.app.SimpleApplication;
 import de.lessvoid.nifty.screen.ScreenController;
 import de.lessvoid.nifty.screen.Screen;

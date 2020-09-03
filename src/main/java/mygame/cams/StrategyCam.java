@@ -29,32 +29,22 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package cams;
+package mygame.cams;
 
-import com.jme3.collision.MotionAllowedListener;
-import com.jme3.input.CameraInput;
-import com.jme3.input.FlyByCamera;
 import com.jme3.input.InputManager;
-import com.jme3.input.Joystick;
-import com.jme3.input.JoystickAxis;
 import com.jme3.input.KeyInput;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.MouseAxisTrigger;
-import com.jme3.input.controls.MouseButtonTrigger;
-import com.jme3.math.FastMath;
-import com.jme3.math.Matrix3f;
-import com.jme3.math.Quaternion;
-import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 
 /**
- * A first-person camera controller.
+ * A first-person camera mygame.controller.
  *
- * After creation, you (or FlyCamAppState) must register the controller using
+ * After creation, you (or FlyCamAppState) must register the mygame.controller using
  * {@link #registerWithInput(InputManager)}.
  *
  * Controls:

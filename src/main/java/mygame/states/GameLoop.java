@@ -7,18 +7,15 @@ package mygame.states;
 
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
-import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
-import com.jme3.math.Plane;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial.CullHint;
 import mygame.RingSpawn;
-import mygame.Utils;
-import utils.Grid;
+import utils.impls.Utils;
 
 /**
  *
