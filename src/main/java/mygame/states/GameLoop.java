@@ -57,10 +57,10 @@ public class GameLoop extends BaseAppState{
        ground.scale(2000f, 0.01f, 20000f);
        ground.setName("Ground");
        ground.setCullHint(CullHint.Always);
-       System.out.println(ground.getName());
        this.app.getRootNode().attachChild(ground);
        
-   } 
+   }
+
 
     @Override
     protected void cleanup(Application app) {

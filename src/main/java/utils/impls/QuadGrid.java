@@ -144,10 +144,7 @@ public class QuadGrid implements Grid {
 
     @Override
     public Position getPosition(Vector3f pos){
-        System.out.println(pos);
         Vector3f indexVector = pos.subtract(leftTop);
-        System.out.println(indexVector);
-        ;
         Position result = new Position((int)(indexVector.x/delta), (int)(indexVector.z/delta));
 
         return result;

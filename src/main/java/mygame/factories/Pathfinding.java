@@ -16,9 +16,9 @@ import utils.Pathfinder;
 public class Pathfinding {
     
     private final static Vector3f CENTER = Vector3f.ZERO;
-    private final static int X = 250;
-    private final static int Y = 250;
-    private final static float DELTA = 0.5f;
+    private final static int X = 80;
+    private final static int Y = 80;
+    private final static float DELTA = 4f;
     private final static Pathfinder PATHFINDER = Pathfinder.create(CENTER, X, Y, DELTA);
     
     public static Pathfinder create(){

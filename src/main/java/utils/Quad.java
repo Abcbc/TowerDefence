@@ -26,4 +26,6 @@ public interface Quad {
     void touch();
     void unTouch();
 
+    //int getScale();
+    //void setScale(int scale);
 }
