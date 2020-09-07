@@ -25,7 +25,9 @@ import com.jme3.scene.Spatial;
 import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
 import java.io.IOException;
+import java.util.Vector;
 
+import mygame.equipment.TestGun;
 import mygame.factories.Pathfinding;
 import utils.Grid;
 import utils.Pathfinder;
@@ -111,15 +113,14 @@ public class BuildingPlacable extends AbstractControl implements ActionListener 
 
     @Override
     public void onAction(String name, boolean isPressed, float tpf) {
-       if(name.equals(LEFT_MOUSE_BUTTON) && !isPressed){
-           try{
-                pathfinder.setBlocker(this.spatial.getLocalTranslation(), Float.MAX_VALUE);
-                System.out.print("Set");
-                this.spatial.removeControl(this);
-           }
-           catch(Exception e){
-               
-           }
+       if(name.equals(LEFT_MOUSE_BUTTON) && !isPressed && this.spatial != null){
+           Vector3f pos = this.spatial.getLocalTranslation();
+           pathfinder.setBlocker(pos, Float.MAX_VALUE);
+           System.out.print("Set");
+           this.spatial.addControl(new Shooting(app,5f, new TestGun(), pos));
+           this.spatial.removeControl(this);
+
+
            
        }
            

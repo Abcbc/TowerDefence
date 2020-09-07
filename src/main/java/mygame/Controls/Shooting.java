@@ -6,6 +6,8 @@
 package mygame.Controls;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.bounding.BoundingSphere;
+import com.jme3.collision.CollisionResult;
 import com.jme3.collision.CollisionResults;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
@@ -18,6 +20,7 @@ import com.jme3.scene.control.AbstractControl;
 import mygame.equipment.Weapon;
 
 import java.io.IOException;
+import java.util.Vector;
 
 /**
  *
@@ -26,11 +29,13 @@ import java.io.IOException;
 public class Shooting extends AbstractControl{
     private final SimpleApplication app;
     private final Weapon weapon;
+    private final BoundingSphere range;
 
 
-    public Shooting(SimpleApplication app, float range, Weapon weapon){
+    public Shooting(SimpleApplication app, float range, Weapon weapon, Vector3f pos){
         this.app = app;
         this.weapon = weapon;
+        this.range = new BoundingSphere(range, pos);
 
     }
     
@@ -39,6 +44,20 @@ public class Shooting extends AbstractControl{
         if (weapon.isEmpty()){
             weapon.reload(tpf);
         }
+        CollisionResults results = new CollisionResults();
+        try {
+            this.range.collideWith(app.getRootNode(), results);
+            for(CollisionResult r: results){
+                if("KillerBox".equals(r.getGeometry().getName())){
+                    r.getGeometry().removeFromParent();
+                    break;
+                }
+            }
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+        }
+
 
     }
     

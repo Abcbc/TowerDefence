@@ -18,8 +18,9 @@ public class PathfinderImpl implements Pathfinder {
     private final int y;
     private final float delta;
 
-    private final Map<Vector3f, Grid> cache = new HashMap();
-    private final Map<Position, Float> blocker = new HashMap();
+    private final Grid gridScheme;
+    private final Map<Vector3f, Grid> cache = new HashMap<>();
+    private final Map<Position, Float> blocker = new HashMap<>();
 
     public PathfinderImpl(Vector3f center, int x, int y, float delta){
         this.center = center;
@@ -27,6 +28,7 @@ public class PathfinderImpl implements Pathfinder {
         this.y = y;
         this.delta = delta;
         this.leftTop = new Vector3f(-(x*delta/2), 0f,-(y*delta/2));
+        this.gridScheme = Grid.create(center,x,y,delta);
         this.rightBottom = this.leftTop.negate(); //NOT SURE
     }
 
@@ -118,7 +120,7 @@ public class PathfinderImpl implements Pathfinder {
 
     @Override
     public void setBlocker(Vector3f pos, float costs) {
-        blocker.put(cache.entrySet().iterator().next().getValue().getPosition(pos), costs);
+        blocker.put(gridScheme.getPosition(pos), costs);
         cache.clear();
 
     }

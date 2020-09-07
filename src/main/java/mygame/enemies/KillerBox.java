@@ -6,6 +6,7 @@
 package mygame.enemies;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.bounding.BoundingSphere;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import mygame.Controls.Moveable;
@@ -27,6 +28,8 @@ public class KillerBox {
         //Controls
         geometry.addControl(new SimpleAI(Vector3f.ZERO));
         geometry.addControl(new Moveable(4.f));
+        geometry.setName("KillerBox");
+        geometry.getMesh().setBound(new BoundingSphere());
 
         //visuals
         //geometry.getMaterial().setColor("Diffuse", new ColorRGBA(.2f, .9f, .9f, .9f));
