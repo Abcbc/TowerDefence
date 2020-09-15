@@ -2,6 +2,7 @@ package utils.impls;
 
 import com.jme3.math.Vector3f;
 import utils.Grid;
+import utils.spatial.PositionImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +11,7 @@ class QuadGridTest {
     @org.junit.jupiter.api.Test
     void getPosition() {
         Vector3f v = new Vector3f(0f,0f,0f);
-        Position pos = new Position(4,4);
+        PositionImpl pos = new PositionImpl(4,4);
         assertEquals(g1.getPosition(v), pos);
     }
 }

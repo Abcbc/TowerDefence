@@ -2,8 +2,8 @@ package utils;
 
 
 import com.jme3.math.Vector3f;
-import utils.impls.Position;
 import utils.impls.QuadGrid;
+import utils.spatial.Vector2i;
 
 import java.util.List;
 
@@ -22,17 +22,17 @@ public interface Grid {
         return new QuadGrid(center, x, y, delta);
     };
 
-    List<Quad> getNeighbors(Position from);
-    List<Quad> getCornerNeighbor(Position from);
-    List<Quad> getSideNeighbor(Position from);
+    List<Quad> getNeighbors(Vector2i from);
+    List<Quad> getCornerNeighbor(Vector2i from);
+    List<Quad> getSideNeighbor(Vector2i from);
 
-    List<Position> getNeighborsPositions(Position from);
-    List<Position> getCornerNeighborPositions(Position from);
-    List<Position> getSideNeighborPositions(Position from);
+    List<Vector2i> getNeighborsPositions(Vector2i from);
+    List<Vector2i> getCornerNeighborPositions(Vector2i from);
+    List<Vector2i> getSideNeighborPositions(Vector2i from);
 
-    Quad getQuad(Position pos);
+    Quad getQuad(Vector2i pos);
     Quad getQuad(Vector3f pos);
-    List<Quad> getQuads(List<Position> pos);
+    List<Quad> getQuads(List<Vector2i> pos);
 
-    Position getPosition(Vector3f pos);
+    Vector2i getPosition(Vector3f pos);
 }

@@ -4,6 +4,7 @@ import com.jme3.math.Vector3f;
 import utils.Grid;
 import utils.Pathfinder;
 import utils.Quad;
+import utils.spatial.Vector2i;
 
 import java.util.*;
 
@@ -20,7 +21,7 @@ public class PathfinderImpl implements Pathfinder {
 
     private final Grid gridScheme;
     private final Map<Vector3f, Grid> cache = new HashMap<>();
-    private final Map<Position, Float> blocker = new HashMap<>();
+    private final Map<Vector2i, Float> blocker = new HashMap<>();
 
     public PathfinderImpl(Vector3f center, int x, int y, float delta){
         this.center = center;
@@ -48,22 +49,22 @@ public class PathfinderImpl implements Pathfinder {
     private void calculate(Grid grid, Vector3f target) {
 
         createHeatmap(grid, target);
-        for(Map.Entry<Position, Float> e :blocker.entrySet()){
+        for(Map.Entry<Vector2i, Float> e :blocker.entrySet()){
             grid.getQuad(e.getKey()).setTargetDistance(Integer.MAX_VALUE);
         }
         createFlowField(grid);
     }
 
     private void createHeatmap(Grid grid, Vector3f target) {
-        List<Position> toProcess = new ArrayList<>();
+        List<Vector2i> toProcess = new ArrayList<>();
 
-        Position targetPos = grid.getPosition(target);
+        Vector2i targetPos = grid.getPosition(target);
         Quad targetQuad = grid.getQuad(targetPos);
         targetQuad.setTargetDistance(0);
         toProcess.add(targetPos);
 
         while(!toProcess.isEmpty()){
-            Position curPos = toProcess.get(0);
+            Vector2i curPos = toProcess.get(0);
             Quad curQuad = grid.getQuad(curPos);
             int cornerValue = curQuad.getTargetDistance() + CORNER_DISTANCE;
             int sideValue = curQuad.getTargetDistance() + SIDE_DISTANCE;
@@ -79,7 +80,7 @@ public class PathfinderImpl implements Pathfinder {
     private void createFlowField(Grid grid) {
         for(int i=0; i<x; i++){
             for(int j=0; j<y; j++){
-                Position pos = new Position(i,j);
+                Vector2i pos = Vector2i.create(i,j);
                 Quad q = grid.getQuad(pos);
                 Quad sq = smallestQuad(grid.getNeighbors(pos));
                 q.setDirection(sq.getCenter().subtract(q.getCenter()));
@@ -102,10 +103,10 @@ public class PathfinderImpl implements Pathfinder {
         return candidate;
     }
 
-    private List<Position> processQuads(int value, Grid grid, List<Position> positions){
-        List<Position> result = new ArrayList<>();
+    private List<Vector2i> processQuads(int value, Grid grid, List<Vector2i> positions){
+        List<Vector2i> result = new ArrayList<>();
 
-        for(Position pos : positions){
+        for(Vector2i pos : positions){
             Quad q = grid.getQuad(pos);
             if(q.getTargetDistance()> value) {
                 q.setTargetDistance(value);
