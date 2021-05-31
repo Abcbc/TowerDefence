@@ -5,16 +5,12 @@
  */
 package mygame;
 
-import com.jme3.app.SimpleApplication;
-import com.jme3.asset.AssetManager;
 import com.jme3.math.FastMath;
-import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
-import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
-import java.util.Random;
 import mygame.enemies.KillerBox;
-import utils.Grid;
+
+import java.util.Random;
 
 /**
  *
@@ -27,10 +23,10 @@ public class RingSpawn extends Node {
     private final float radius;
     private final Vector3f center;
     private final Random random;
-    private final SimpleApplication app;
+    private final Main app;
     
     public RingSpawn(float outerRadius, float innerRadius, Vector3f center, 
-            SimpleApplication app){
+            Main app){
         super.setName("RingSpawn");
         this.app = app;
         this.innerRadius = innerRadius;
@@ -50,7 +46,7 @@ public class RingSpawn extends Node {
         KillerBox kb = new KillerBox(this.app, getRandomPosition());   
     }
     
-    private Vector3f getRandomPosition(){
+    public Vector3f getRandomPosition(){
         float angle = (float)  (FastMath.DEG_TO_RAD * random.nextFloat() * 360.);
         float distance = (float) (random.nextFloat() * this.radius + this.innerRadius);
         float x  = FastMath.cos(angle)*distance;

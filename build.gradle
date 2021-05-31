@@ -70,13 +70,14 @@ repositories {
 dependencies {
     // You can read more about how to add dependencies here:
     //   https://docs.gradle.org/current/userguide/dependency_management.html#sec:how_to_declare_your_dependencies
-
+    compile "com.simsilica:zay-es:1.2.1"
+    compile "com.simsilica:zay-es-net:1.2.1"
     // from jcenter (or mavenLocal) repositories:
     implementation 'org.jmonkeyengine:jme3-core:' + jmonkeyengineVersion
     //implementation 'org.jmonkeyengine:jme3-bullet:' + jmonkeyengineVersion
     //runtimeOnly 'org.jmonkeyengine:jme3-bullet-native:' + jmonkeyengineVersion
     implementation 'org.jmonkeyengine:jme3-desktop:' + jmonkeyengineVersion
-    //implementation 'org.jmonkeyengine:jme3-effects:' + jmonkeyengineVersion
+    implementation 'org.jmonkeyengine:jme3-effects:' + jmonkeyengineVersion
     implementation 'org.jmonkeyengine:jme3-networking:' + jmonkeyengineVersion
     implementation 'org.jmonkeyengine:jme3-niftygui:' + jmonkeyengineVersion
     implementation 'org.jmonkeyengine:jme3-terrain:' + jmonkeyengineVersion
@@ -95,6 +96,7 @@ dependencies {
     // from stephengold's bintray repositories:
     //runtimeOnly 'org.jmonkeyengine:jme3-testdata:3.1.0-stable'
     //runtimeOnly 'org.jmonkeyengine:jme3-testdata:3.3.0-alpha2'
+
 }
 
 // cleanup tasks

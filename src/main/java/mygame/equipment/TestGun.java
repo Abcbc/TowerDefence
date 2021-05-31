@@ -1,6 +1,7 @@
 package mygame.equipment;
 
 public class TestGun implements Weapon{
+
     @Override
     public boolean isEmpty() {
         //System.out.println("CLICK.");

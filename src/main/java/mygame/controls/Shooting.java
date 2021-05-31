@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mygame.Controls;
+package mygame.controls;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.bounding.BoundingSphere;
@@ -20,7 +20,6 @@ import com.jme3.scene.control.AbstractControl;
 import mygame.equipment.Weapon;
 
 import java.io.IOException;
-import java.util.Vector;
 
 /**
  *
